@@ -13,12 +13,12 @@ function App() {
       <Navbar />
       <Hero />
       <About />
+      <Contact />
       <Skills />
       <Projects />
       <Experience />
       <Education />
       <Achievements />
-      <Contact />
     </div>
   );
 }

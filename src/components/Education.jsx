@@ -1,42 +1,42 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 const educationData = [
   {
-    degree: 'Computer Science and Engineering',
-    institution: 'The Maharaja Sayajirao University of Baroda',
-    duration: '2022-2026',
-    grade: 'CGPA: 7.84'
+    degree: "Computer Science and Engineering",
+    institution: "The Maharaja Sayajirao University of Baroda",
+    duration: "2022-2026",
+    grade: "CGPA: 7.84",
   },
   {
-    degree: 'High School (Major in Mathematics) GHSEB',
-    institution: 'Shree Swaminarayan Gurukul Vidyalaya',
-    duration: '2021-2022',
-    grade: 'Percentage: 86.33%'
+    degree: "High School (Major in Mathematics) GHSEB",
+    institution: "Shree Swaminarayan Gurukul Vidyalaya",
+    duration: "2021-2022",
+    grade: "Percentage: 86.33%",
   },
   {
-    degree: 'Secondary School (Major in Science)',
-    institution: 'Shree Swaminarayan Gurukul Vidyalaya',
-    duration: '2020-2021',
-    grade: 'Percentage: 84.30%'
-  }
+    degree: "Secondary School (Major in Science)",
+    institution: "Shree Swaminarayan Gurukul Vidyalaya",
+    duration: "2020-2021",
+    grade: "Percentage: 84.30%",
+  },
 ];
 
 const Education = () => {
   return (
     <div
       name="education"
-      className="w-full bg-gradient-to-b from-[#0a192f] to-[#112240] text-gray-300 py-4"
+      className="w-full bg-gradient-to-b from-[#112240] to-[#0a192f] text-gray-300 py-2"
     >
-      <div className="max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full">
-        <div className='pb-8'>
-          <p className="text-4xl font-bold inline border-b-4 border-emerald-400">
+      <div className="max-w-[1200px] mx-auto px-6 py-6 w-full ">
+        <div className="mb-10">
+          <h2 className="text-4xl font-bold inline border-b-4 border-emerald-400">
             Education
-          </p>
+          </h2>
         </div>
         <div className="grid gap-8">
           {educationData.map((edu, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               className="bg-[#112240]/80 backdrop-blur-sm rounded-lg p-6 shadow-lg border border-emerald-400/10 hover:border-emerald-400/30 transition-all duration-300"
               initial={{ opacity: 0, y: 50 }}

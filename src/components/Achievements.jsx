@@ -1,34 +1,45 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaAward, FaNewspaper, FaTrophy, FaDownload, FaEye, FaTimes } from 'react-icons/fa';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  FaAward,
+  FaNewspaper,
+  FaTrophy,
+  FaDownload,
+  FaEye,
+  FaTimes,
+} from "react-icons/fa";
 
 const achievementsData = [
   {
     icon: <FaTrophy className="text-yellow-400" size={40} />,
     title: "SAP Innovation Marathon",
-    description: "Out of 626 teams across Gujarat and Maharashtra, placed in top 30 at the SAP organized Innovation marathon.",
-    // certificates: [
-    //   "/certificates/sap-certificate1.jpg",  // Replace with actual paths when available
-    //   "/certificates/sap-certificate2.jpg",
-    //   "/certificates/sap-certificate3.jpg",
-    //   "/certificates/sap-certificate4.jpg"
-    // ],
-    // type: "pdf"
+    description:
+      "Out of 626 teams across Gujarat and Maharashtra, placed in top 30 at the SAP organized Innovation marathon.",
+    certificates: [
+      "/certificates/sap-certificate1.jpg", // Replace with actual paths when available
+      "/certificates/sap-certificate2.jpg",
+      "/certificates/sap-certificate3.jpg",
+      "/certificates/sap-certificate4.jpg",
+    ],
+    type: "certi",
   },
   {
-    icon: <FaNewspaper className="text-blue-400" size={40} />,
+    icon: <img src="/divyaimage.jpg" className="text-emerald-400" size={40} />,
     title: "Newspaper Publication - Divya Bhaskar",
-    description: "Featured in \"Divya Bhaskar\" newspaper for Meri Shiksha project.",
-    pdfUrl: "/DivyaBhaskar.pdf",  // Replace with actual path when available
-    type: "newspaper"
+    description:
+      'Featured in "Divya Bhaskar" newspaper for Meri Shiksha project.',
+    pdfUrl: "/divyapdf.pdf", // Replace with actual path when available
+    type: "newspaper",
   },
   {
-    icon: <FaNewspaper className="text-emerald-400" size={40} />,
-    title: "Newspaper Publication - Gujarat Samachar",
-    description: "Featured in \"Gujarat Samachar\" newspaper for Meri Shiksha project.",
-    pdfUrl: "/newspapers/gujarat-samachar.pdf",  // Replace with actual path when available
-    type: "newspaper"
-  }
+    icon: (
+      <img src="/sandeshimage.png" className="text-emerald-400" size={40} />
+    ),
+    title: "Newspaper Publication - Sandesh",
+    description: 'Featured in "Sandesh" newspaper for Meri Shiksha project.',
+    pdfUrl: "/sandesh.pdf", // Replace with actual path when available
+    type: "newspaper",
+  },
 ];
 
 const Achievements = () => {
@@ -53,7 +64,7 @@ const Achievements = () => {
       className="w-full bg-gradient-to-b from-[#112240] to-[#0a192f] text-gray-300 py-4 relative"
     >
       <div className="max-w-[1200px] mx-auto px-6 py-10 w-full h-full">
-        <div className='mb-10'>
+        <div className="mb-10">
           <h2 className="text-4xl font-bold inline border-b-4 border-emerald-400">
             Achievements
           </h2>
@@ -69,32 +80,34 @@ const Achievements = () => {
               viewport={{ once: true }}
             >
               <div className="flex items-center gap-4 mb-4">
-                <div className="bg-[#0a192f] p-4 rounded-lg shadow-lg">
+                <div className="  p-0 w-18 h-18 flex items-center justify-center">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-bold text-white">{item.title}</h3>
               </div>
-              <p className="text-gray-300 leading-relaxed mb-6">{item.description}</p>
-              
+              <p className="text-gray-300 leading-relaxed mb-6">
+                {item.description}
+              </p>
+
               {item.type === "pdf" && (
-                <button 
+                <button
                   onClick={() => openModal(item)}
-                  className="w-full flex items-center justify-center gap-2 bg-white text-[#0a192f] py-2 px-4 rounded-md hover:bg-gray-100 transition-colors duration-300"
+                  className="bg-transparent text-emerald-400 group border-2 border-emerald-400 px-8 py-3 w-full flex items-center justify-center hover:bg-emerald-400/10 transition-all duration-300 rounded-md font-medium"
                 >
                   <FaEye /> View PDF
                 </button>
               )}
-              
+
               {item.type === "newspaper" && (
                 <div className="flex gap-3">
-                  <button 
+                  <button
                     onClick={() => openModal(item)}
-                    className="flex-1 flex items-center justify-center gap-2 bg-white text-[#0a192f] py-2 px-4 rounded-md hover:bg-gray-100 transition-colors duration-300"
+                    className="flex-1 flex items-center justify-center gap-2 bg-transparent border-2 border-emerald-400 text-emerald-400 py-2 px-4 rounded-md hover:bg-emerald-400/10 transition-colors duration-300"
                   >
                     <FaEye /> View
                   </button>
-                  <a 
-                    href={item.pdfUrl} 
+                  <a
+                    href={item.pdfUrl}
                     download
                     className="flex-1 flex items-center justify-center gap-2 bg-transparent border-2 border-emerald-400 text-emerald-400 py-2 px-4 rounded-md hover:bg-emerald-400/10 transition-colors duration-300"
                   >
@@ -112,8 +125,10 @@ const Achievements = () => {
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
           <div className="bg-[#0a192f] rounded-xl overflow-hidden max-w-3xl w-full max-h-[90vh] relative">
             <div className="flex justify-between items-center p-4 border-b border-emerald-400/20">
-              <h3 className="text-xl font-bold text-white">{selectedItem.title}</h3>
-              <button 
+              <h3 className="text-xl font-bold text-white">
+                {selectedItem.title}
+              </h3>
+              <button
                 onClick={closeModal}
                 className="text-gray-400 hover:text-white transition-colors duration-300"
               >
@@ -124,25 +139,44 @@ const Achievements = () => {
               {selectedItem.type === "pdf" && selectedItem.certificates ? (
                 <div>
                   <div className="flex justify-between items-center mb-4">
-                    <h4 className="text-lg font-semibold text-white">Certificate Images</h4>
-                    <p className="text-emerald-400 text-sm">{currentImageIndex + 1} of {selectedItem.certificates.length}</p>
+                    <h4 className="text-lg font-semibold text-white">
+                      Certificate Images
+                    </h4>
+                    <p className="text-emerald-400 text-sm">
+                      {currentImageIndex + 1} of{" "}
+                      {selectedItem.certificates.length}
+                    </p>
                   </div>
                   <div className="relative">
-                    <img 
-                      src={selectedItem.certificates[currentImageIndex]} 
-                      alt={`${selectedItem.title} - Certificate ${currentImageIndex + 1}`} 
+                    <img
+                      src={selectedItem.certificates[currentImageIndex]}
+                      alt={`${selectedItem.title} - Certificate ${
+                        currentImageIndex + 1
+                      }`}
                       className="w-full h-auto rounded-lg"
                     />
                     {selectedItem.certificates.length > 1 && (
                       <div className="flex justify-between absolute top-1/2 transform -translate-y-1/2 w-full px-4">
-                        <button 
-                          onClick={() => setCurrentImageIndex(prev => prev === 0 ? selectedItem.certificates.length - 1 : prev - 1)}
+                        <button
+                          onClick={() =>
+                            setCurrentImageIndex((prev) =>
+                              prev === 0
+                                ? selectedItem.certificates.length - 1
+                                : prev - 1
+                            )
+                          }
                           className="bg-black/50 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
                         >
                           ❮
                         </button>
-                        <button 
-                          onClick={() => setCurrentImageIndex(prev => prev === selectedItem.certificates.length - 1 ? 0 : prev + 1)}
+                        <button
+                          onClick={() =>
+                            setCurrentImageIndex((prev) =>
+                              prev === selectedItem.certificates.length - 1
+                                ? 0
+                                : prev + 1
+                            )
+                          }
                           className="bg-black/50 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
                         >
                           ❯
@@ -152,10 +186,14 @@ const Achievements = () => {
                   </div>
                   <div className="flex justify-center mt-4 gap-2">
                     {selectedItem.certificates.map((_, index) => (
-                      <button 
-                        key={index} 
+                      <button
+                        key={index}
                         onClick={() => setCurrentImageIndex(index)}
-                        className={`w-3 h-3 rounded-full ${currentImageIndex === index ? 'bg-emerald-400' : 'bg-gray-600'}`}
+                        className={`w-3 h-3 rounded-full ${
+                          currentImageIndex === index
+                            ? "bg-emerald-400"
+                            : "bg-gray-600"
+                        }`}
                       />
                     ))}
                   </div>
@@ -167,8 +205,8 @@ const Achievements = () => {
                     className="w-full h-[70vh] rounded-lg mb-4"
                     title={selectedItem.title}
                   />
-                  <a 
-                    href={selectedItem.pdfUrl} 
+                  <a
+                    href={selectedItem.pdfUrl}
                     download
                     className="flex items-center justify-center gap-2 bg-white text-[#0a192f] py-2 px-6 rounded-md hover:bg-gray-100 transition-colors duration-300"
                   >
@@ -187,6 +225,5 @@ const Achievements = () => {
     </div>
   );
 };
-
 
 export default Achievements;
